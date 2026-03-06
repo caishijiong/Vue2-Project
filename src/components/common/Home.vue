@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <v-Header></v-Header>
+    <v-Header :folded="folded" @collapse-change="handleCollapseChange"></v-Header>
     <div class="content-container">
-      <v-SidebarItem></v-SidebarItem>
+      <v-SidebarItem :folded="folded"></v-SidebarItem>
       <div class="main-content">
         <h1>这是一个主页组件</h1>
         <router-view></router-view>
@@ -19,6 +19,16 @@ export default {
   components: {
     vSidebarItem,
     vHeader,
+  },
+  data() {
+    return {
+      folded: false,
+    }
+  },
+  methods: {
+    handleCollapseChange() {
+      this.folded = !this.folded
+    },
   },
 }
 </script>
